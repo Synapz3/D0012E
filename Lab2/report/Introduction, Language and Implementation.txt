@@ -1,0 +1,14 @@
+\section{Introduction}
+The Lab is to implement two variations of linear probing. Linear probing is a way to store data by filling a array, slot by slot. It can be imagined as a parkinglot where you arrive with a car and start to search for a empty slot from any random position. You continue to search for a empty slot till you find one or discover the parking lot is full.
+
+The first variant in the lab is a search in both directions from the initial spot. In the second variant you only search $c$ (ware $c$ is a content of users chose) steps in both directions, in comparison to the the first variant where you search the entire array (linear). If no slot is available if an interval, the array is re-hashed and we try again with the new array.
+
+\subsection{Language}
+This lab we choose tried to implement the algorithms in C++, but discovered that our tests were wrong and shwitched to Java since we have more experience with Java compared to C++. In the previous lab we used Python and during the lab we discovered that Python is really bad optimised language. Therefore we decided to switch language, any other than Python. Another contributing factor to switch language between labs is to get a wider knowledge of diffrent languages. Also to reftesh old skills.
+
+\subsection{Implementation}
+The implementation of the two variants is a bit tricky because there is a lot of small details to keep track of. For example, a variable that count the number of an element in the array or a variable for the array size. Both are easy to kip track of but it needs to be done.
+
+Our first implementation takes an element and hashes it. The program then tries to place the element in an array at the position of the hash value. If the spot is not empty we look for the closest spot to that location.If we find an enmpty slot, we place the element at that slot. Otherwise the array is full.
+
+The secound implementation is simlair to the first one. It hashes the element and tries to place the element in an array at the hashed value. Then if the slot is taken, we check up and down to hopefully find the closest slot that´s empty. Woce we know the distance between the original hashed value and the free slot, we check if the distance is grater than a predetermined constatnt. If there is a free space, than place the element at that psoition. If there is no available slot within the range of $x$ and $x+c$, then find an element in the interval $x$ and $x+c$ with the condition that $y$ (the possible position) has an empty slot in the intervall $y$ and $y+c$. If sutch an element exists, move the element at $y$ to the empty slot in the intervall $y$ and $y+c$. Then place the new element at the $y$, witch is now empty. Otherwise, rehash the element and try again.
