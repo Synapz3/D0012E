@@ -63,7 +63,7 @@
 \newpage
 
 \begin{abstract}
-In this report the runtime of Dijkstra’s algorithm is analysed with different sizes of the graph and different number of connections on on each node. The trend shows that a bigger graph results in a longer runtime. 
+In this report the runtime of Dijkstra’s algorithm is analysed with different number of connections on on each node and different "D" sizes ("D" is the D in D-arr heap). The trend shows that a bigger graph results in a longer runtime. The best runtime were when "D" was about 13 thousand.
 \\
 
 Generally the tests we ran were very case sensitive. The runtime differs a lot between worst and best case. The time we used was an average of multiple testes to minimize the effect from best and worst case tests.  
@@ -73,7 +73,7 @@ Generally the tests we ran were very case sensitive. The runtime differs a lot b
 \newpage
 
 \section{Introduction}
-In this report a lab on Dijkstra’s algorithm is presented. The lab was done in the course "algorithms and computer structure". The goal for the lab was to see how the runtime is effected on different sizes of graphs and different number of connections to each node.
+In this report a lab on Dijkstra’s algorithm is presented. The lab was done in the course "algorithms and computer structure". The goal for the lab was to see how the runtime is effected on different sizes of "D" and different number of connections to each node.
 
 \subsection{Language}
 We chose to use Java as our programming language of choice over other languages, because it is a language the we are comfortable to work with. Java is also one of the better optimized languages.
@@ -84,15 +84,14 @@ Implementing Dijkstra’s algorithm is a challenge because the graphs representa
  We chose to use a class representation of the graph. The class implementaion is in some regard straight forward and logical but has a clear disadvantages when it comes to memory consumption. When the graph grows its memory usage grows very fast.
 \\
 
-The hardest part of implementating the Dijkstra’s algorithm is to find a way to add the new nods to the added ones without adding the same node twice. Every node can be in one out of three stages: not known, known but don't added or known and added. The nodes in the third stage is easily stored a d-array Heap. The nodes in the second stage can be stored in many ways. It is preferable to store it in such a way that it is easy to add new nodes and find the minimum, this can be achived with a min heap for example. 
+The hardest part of implementating the Dijkstra’s algorithm is to find a way to add the new nods to the added ones without adding the same node twice. To solved that problem we used an array where we stored the added nodes, distance to node and the preceding node.
 
 
 \section{Test procedure}
-The tests were ran several times with different sizes of nodes, d and edges.
-The numbers were doubled in hope of making nice looking graphs.
+The tests were ran several times with different sizes "D" and edges. We ran the testes multiple times and tock the averages time.
 \\
 
-The tests started at $20000$ nodes, d at $4$ and minimum edges equal to the number of nodes. When increasing the three different sizes were doubled individually and $80$ different graphs were generated to get an average for the specific test (nodes, d and edges relation).
+We ran tow tests, one were the "D" value differ from $1 000-20 000$ and $10 000$ nodes and $40 000$ edges. In the outer test we weried the edge numbers $10 000-40 000$ and $10 000$ and  "D" at $1000$. 
 \\
 
 The tests that were run are listed in \ref{Testing sets}.
